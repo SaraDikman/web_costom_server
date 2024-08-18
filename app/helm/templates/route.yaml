@@ -1,0 +1,12 @@
+# Purpose: Define Route for the application in OpenShift
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: node-app
+spec:
+  host: node-app-node-app.apps.cluster-n4652.n4652.sandbox2938.opentlc.com
+  to:
+    kind: Service
+    name: node-app
+  port:
+    targetPort: 8080

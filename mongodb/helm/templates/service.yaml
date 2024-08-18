@@ -1,0 +1,12 @@
+# Purpose: Define Service for MongoDB
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongodb
+spec:
+  type: {{ .Values.service.type }}
+  ports:
+    - port: {{ .Values.service.port }}
+      targetPort: 27017
+  selector:
+    app: mongodb

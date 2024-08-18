@@ -1,0 +1,17 @@
+# Purpose: Define default values for the deployment
+replicaCount: 1
+image:
+  repository: mongo
+  pullPolicy: IfNotPresent
+  tag: "latest"
+service:
+  type: ClusterIP
+  port: 27017
+persistence:
+  enabled: true
+  accessMode: ReadWriteOnce
+  size: 1Gi
+secret:
+  mongoUri: "mongodb://mongodb:27017/mydatabase"
+  rootPassword: "root-password"
+  password: "password"

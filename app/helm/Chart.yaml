@@ -1,0 +1,4 @@
+apiVersion: v2
+name: custom-web-server
+description: A Helm chart for deploying a custom web server on OpenShift
+version: 0.1.0
