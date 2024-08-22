@@ -15,3 +15,5 @@ secret:
   mongoUri: "mongodb://mongodb:27017/mydatabase"
   rootPassword: "root-password"
   password: "password"
+namespace:
+  name: my-web-project

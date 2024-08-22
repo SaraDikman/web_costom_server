@@ -4,7 +4,7 @@ kind: Route
 metadata:
   name: node-app
 spec:
-  host: node-app-node-app.apps.cluster-n4652.n4652.sandbox2938.opentlc.com
+  # host: node-app-node-app.apps.cluster-n4652.n4652.sandbox2938.opentlc.com
   to:
     kind: Service
     name: node-app

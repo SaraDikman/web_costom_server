@@ -1,4 +1,3 @@
-# Purpose: Define Deployment for the application
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -13,6 +12,7 @@ spec:
       labels:
         app: node-app
     spec:
+      serviceAccountName: app-serviceaccount
       securityContext:
         runAsNonRoot: true
         seccompProfile:
@@ -29,7 +29,19 @@ spec:
               - ALL
           env:
             - name: MONGO_URI
-              value: "{{ .Values.secret.mongoUri }}"
-              # value: "mongodb://mongodb:27017/mydatabase"
-              
-
+              valueFrom:
+                secretKeyRef:
+                  name: app-secret
+                  key: mongo-uri
+            - name: DB_PORT
+              valueFrom:
+                configMapKeyRef:
+                  name: app-config
+                  key: db-port
+          volumeMounts:
+            - name: config-volume
+              mountPath: /etc/config
+      volumes:
+        - name: config-volume
+          configMap:
+            name: app-config
