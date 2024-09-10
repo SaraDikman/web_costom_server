@@ -1,13 +1,12 @@
-# Purpose: Define Service for the application
+# Purpose: Define Service for MongoDB
 apiVersion: v1
 kind: Service
 metadata:
   name: node-app
 spec:
-  # type: {{ .Values.service.type }}
+  type: {{ .Values.service.type }}
   ports:
     - port: {{ .Values.service.port }}
       targetPort: 8080
-      protocol: TCP
   selector:
     app: node-app
